@@ -245,7 +245,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -274,4 +274,17 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret,  {
+    :image_size => { :width => 400, :height => 400},
+    :info_fields => 'email,name,first_name,last_name,gender'
+  }
+  config.omniauth :google_oauth2, Rails.application.secrets.google_app_id, Rails.application.secrets.google_app_secret, {
+    :skip_jwt => true,
+    :name => "google",
+    :scope => "email,profile,offline",
+    :prompt => "consent",
+    :image_aspect_ratio => "square",
+    :image_size => 400,
+  }
+  config.omniauth :microsoft_office365, Rails.application.secrets.outlook_app_id.to_s, Rails.application.secrets.outlook_app_secret.to_s
 end
