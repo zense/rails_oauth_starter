@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Copy `config/secrets.yml.example` to `config/secrets.yml`. This step is mandatory
 
-Things you may want to cover:
+In secrets.yml file add app ID and secret key obtained from different oauth applications. This step is not mandatory if you don't want to use omniauth.
 
-* Ruby version
 
-* System dependencies
+## Docker
+Right now there is support only for sqlite database. Will add support for postgres in future.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run using docker
+```
+docker-compose build
+docker-compose up
+```
